@@ -5,6 +5,8 @@ export interface TrackingFormData {
   trackingCode: string;
   carrier: string;
   productName: string;
+  trackingLink?: string;
+  invoiceNumber?: string;
 }
 
 export interface GeneratedContent {

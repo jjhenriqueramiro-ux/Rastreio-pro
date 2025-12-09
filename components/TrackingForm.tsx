@@ -13,7 +13,9 @@ const TrackingForm: React.FC<TrackingFormProps> = ({ onSubmit, isLoading }) => {
     customerEmail: '',
     trackingCode: '',
     carrier: CarrierType.CORREIOS,
-    productName: ''
+    productName: '',
+    trackingLink: '',
+    invoiceNumber: ''
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
@@ -112,6 +114,32 @@ const TrackingForm: React.FC<TrackingFormProps> = ({ onSubmit, isLoading }) => {
               onChange={handleChange}
               placeholder="Ex: AA123456789BR"
               className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors font-mono uppercase"
+            />
+          </div>
+        </div>
+
+        {/* Novos Campos Opcionais */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">Link de Rastreio (Opcional)</label>
+            <input
+              type="url"
+              name="trackingLink"
+              value={formData.trackingLink || ''}
+              onChange={handleChange}
+              placeholder="https://exemplo.com/rastreio"
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
+            />
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">Nota Fiscal (Opcional)</label>
+            <input
+              type="text"
+              name="invoiceNumber"
+              value={formData.invoiceNumber || ''}
+              onChange={handleChange}
+              placeholder="Ex: 001.234.567"
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
             />
           </div>
         </div>

@@ -18,10 +18,14 @@ export const generateNotificationMessage = async (data: TrackingFormData): Promi
     - Produto: ${data.productName}
     - Transportadora: ${data.carrier}
     - Código de Rastreio: ${data.trackingCode}
+    ${data.trackingLink ? `- Link de Rastreio: ${data.trackingLink}` : ''}
+    ${data.invoiceNumber ? `- Nota Fiscal: ${data.invoiceNumber}` : ''}
     
     Instruções:
     1. Crie um assunto de e-mail curto e atraente.
-    2. Crie uma mensagem para WhatsApp que seja direta, use emojis adequados (caminhão, caixa, brilhos), inclua o código de rastreio e um link simulado de rastreamento (se for Correios, use https://rastreamento.correios.com.br/app/index.php).
+    2. Crie uma mensagem para WhatsApp que seja direta, use emojis adequados (caminhão, caixa, brilhos), inclua o código de rastreio.
+       ${data.trackingLink ? `Use EXATAMENTE este link para o rastreio: ${data.trackingLink}` : 'Inclua um link de rastreamento genérico adequado à transportadora (se for Correios, use https://rastreamento.correios.com.br/app/index.php).'}
+       ${data.invoiceNumber ? `Cite que a Nota Fiscal ${data.invoiceNumber} foi emitida.` : ''}
     3. Crie um corpo de e-mail mais formal, mas cordial, agradecendo a compra e fornecendo os detalhes.
     
     Retorne APENAS o JSON.
